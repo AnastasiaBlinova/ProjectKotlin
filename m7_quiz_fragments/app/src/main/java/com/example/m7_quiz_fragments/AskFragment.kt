@@ -78,12 +78,12 @@ class AskFragment : Fragment() {
         binding.radioButton12.text = QuizStorage.getQuiz(QuizStorage.Locale.Ru).questions[2].answers[3]
 
        binding.back.setOnClickListener {
-           // parentFragmentManager.commit {
-                //replace<HelloFragment>(R.id.fragment_hello)
-                //добавление перехода в стек чтобы не выбивало
-                //addToBackStack(HelloFragment::class.java.simpleName)
-            //}
-           findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
+            parentFragmentManager.commit {
+                replace<HelloFragment>(R.id.fragment_hello)
+               // добавление перехода в стек чтобы не выбивало
+                addToBackStack(HelloFragment::class.java.simpleName)
+            }
+//           findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
        binding.share.setOnClickListener {
 // проверяю каждый ответ на "выбранность" и присваиваю соответствующий результат
@@ -130,13 +130,13 @@ class AskFragment : Fragment() {
                binding.radioButton7.isChecked || binding.radioButton8.isChecked) && (
                binding.radioButton9.isChecked || binding.radioButton10.isChecked ||
                binding.radioButton11.isChecked || binding.radioButton12.isChecked)){
-                    //parentFragmentManager.commit {
-                        //replace<ResultFragment>(containerViewId = R.id.fragment_hello, args = bundle)
+                    parentFragmentManager.commit {
+                        replace<ResultFragment>(containerViewId = R.id.fragment_hello, args = bundle)
                         //добавление перехода в стек чтобы не выбивало
-                        //addToBackStack(ResultFragment::class.java.simpleName)
+                        addToBackStack(ResultFragment::class.java.simpleName)
                         //удаление одного перехода из стека
-                    //}
-                    findNavController().navigate(R.id.action_SecondFragment_to_resultFragment)
+                    }
+//                    findNavController().navigate(R.id.action_SecondFragment_to_resultFragment)
                }
             else{
 //уведомление пользователя о необходимости ответить на все вопросы
