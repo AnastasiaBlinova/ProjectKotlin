@@ -9,6 +9,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
+import androidx.navigation.fragment.findNavController
 import com.example.m5_quiz_resources.Question
 import com.example.m5_quiz_resources.QuizStorage
 import com.example.m7_quiz_fragments.databinding.FragmentResultBinding
@@ -33,14 +34,15 @@ class ResultFragment : Fragment() {
     private var param4: Int? = null
 
     private var picture: Int? = null
-//создаем null переменную для бандинга и геттер
+
+    //создаем null переменную для бандинга и геттер
     private var _binding: FragmentResultBinding? = null
     private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (picture == 1){
+        if (picture == 1) {
             binding.sadPicture.isVisible
             binding.normalPicture.isInvisible
             binding.goodPicture.isInvisible
@@ -58,7 +60,7 @@ class ResultFragment : Fragment() {
             binding.goodPicture.isVisible
             binding.wonderfulPicture.isInvisible
         }
-        if (picture == 4){
+        if (picture == 4) {
             binding.sadPicture.isInvisible
             binding.normalPicture.isInvisible
             binding.goodPicture.isInvisible
@@ -71,6 +73,7 @@ class ResultFragment : Fragment() {
             param3 = it.getString(ARG_PARAM3)
             param4 = it.getInt(ARG_PARAM4)
         }
+
     }
 
     override fun onCreateView(
@@ -79,30 +82,39 @@ class ResultFragment : Fragment() {
     ): View? {
 //создем бандинг и возвращаем корневое вью
         _binding = FragmentResultBinding.inflate(inflater)
-
         binding.replyAgain.setOnClickListener {
-            parentFragmentManager.commit {
-                replace<AskFragment>(R.id.fragment_hello)
-                //добавление перехода в стек чтобы не выбивало
-                addToBackStack(AskFragment::class.java.simpleName)
-                //удалить два перехода
-                parentFragmentManager.popBackStack()
-                parentFragmentManager.popBackStack()
-            }
+//            parentFragmentManager.commit {
+//                replace<AskFragment>(R.id.fragment_hello)
+//                //добавление перехода в стек чтобы не выбивало
+//                addToBackStack(AskFragment::class.java.simpleName)
+            //удалить два перехода
+//                parentFragmentManager.popBackStack()
+//                parentFragmentManager.popBackStack()
+//            }
+            findNavController().navigate(R.id.action_resultFragment_to_SecondFragment)
+            //добавление перехода в стек чтобы не выбивало
+//                addToBackStack(AskFragment::class.java.simpleName)
+            //удалить два перехода
+//                parentFragmentManager.popBackStack()
+//                parentFragmentManager.popBackStack()
         }
+
+
         return binding.root
+
     }
 
-// здесь будет код, который будет отображать значение переданного аргумента
+    // здесь будет код, который будет отображать значение переданного аргумента
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.answer1.text = param1
         binding.answer2.text = param2
         binding.answer3.text = param3
         picture = param4
+
     }
 
-//уничтожаем созданное вью для фрагментов и освобождаем память
+    //уничтожаем созданное вью для фрагментов и освобождаем память
     override fun onDestroyView() {
         super.onDestroyView()
         //очистим переменные бандинга в этом методе

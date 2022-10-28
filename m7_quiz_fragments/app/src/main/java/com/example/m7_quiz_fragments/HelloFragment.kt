@@ -24,7 +24,7 @@ class HelloFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-//создаем null переменную для бандинга и геттер
+    //создаем null переменную для бандинга и геттер
     private var _binding: FragmentHelloBinding? = null
     private val binding get() = _binding!!
 
@@ -44,20 +44,20 @@ class HelloFragment : Fragment() {
         _binding = FragmentHelloBinding.inflate(inflater)
 //прописываем переход в другой фрагмент по нажатию на кнопку buttonShareThoughts
         binding.buttonShareThoughts.setOnClickListener {
-            parentFragmentManager.commit {
-                replace<AskFragment>(R.id.fragment_hello)
-                //добавление перехода в стек чтобы не выбивало
-                addToBackStack(AskFragment::class.java.simpleName)
-            }
-            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+            //parentFragmentManager.commit {
+            //  replace<AskFragment>(R.id.fragment_hello)
+            //добавление перехода в стек чтобы не выбивало
+            // addToBackStack(AskFragment::class.java.simpleName)
+            //}
+            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
         return binding.root
     }
 
-//уничтожаем созданное вью для фрагментов и освобождаем память
+    //уничтожаем созданное вью для фрагментов и освобождаем память
     override fun onDestroyView() {
         super.onDestroyView()
-    //очистим переменные бандинга в этом методе
+        //очистим переменные бандинга в этом методе
         _binding = null
     }
 

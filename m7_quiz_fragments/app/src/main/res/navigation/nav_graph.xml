@@ -14,7 +14,7 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/SecondFragment"/>
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
@@ -24,20 +24,26 @@
         <action
             android:id="@+id/action_SecondFragment_to_resultFragment"
             app:destination="@id/resultFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/FirstFragment"/>
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
             app:destination="@id/FirstFragment"
-            app:popUpToInclusive="true"/>
+            app:popUpTo="@id/FirstFragment"/>
+
     </fragment>
     <fragment
         android:id="@+id/resultFragment"
         android:name="com.example.m7_quiz_fragments.ResultFragment"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
+        tools:layout="@layout/fragment_result">
+        <action
+            android:id="@+id/action_resultFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment"
+            app:popUpTo="@id/SecondFragment"/>
         <action
             android:id="@+id/action_resultFragment_to_FirstFragment"
             app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment"
             app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
