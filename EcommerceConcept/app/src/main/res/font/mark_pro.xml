@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Mark Pro -->
+    <TextView
+        android:id="@+id/mark_pro"
+        android:layout_width="264dp"
+        android:layout_height="66dp"
+        android:text="@string/mark_pro"
+        android:textAppearance="@style/mark_pro"
+        android:lineSpacingExtra="-10sp"
+        android:gravity="top"
+        />
+
+    <!--
+    Font family: Mark Pro
+    Line height: 66sp
+    (identical to box height)
+    -->
+
+
+</font-family>

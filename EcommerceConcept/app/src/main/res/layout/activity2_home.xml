@@ -1,0 +1,491 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ActivityHome"
+    android:orientation="vertical"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="11dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="11dp"
+            android:src="@drawable/home_place"
+            tools:ignore="ContentDescription,RtlSymmetry" />
+
+        <TextView
+            android:layout_width="119dp"
+            android:layout_height="19dp"
+            android:text="@string/zihuatanejo_gro"
+            android:textSize="15sp" />
+
+        <ImageButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:backgroundTint="#F5F5F5"
+            app:srcCompat="@drawable/home_change_place"
+            tools:ignore="ContentDescription"
+            android:focusable="true" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:text="@string/select_category"
+        android:textColor="@color/dark"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/filter"
+        android:layout_width="40dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="21dp"
+        android:background="#F5F5F5"
+        android:src="@drawable/filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/phoneButtonOff"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/category_phone_grey" />
+
+                    <TextView
+                        android:id="@+id/phoneTextOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/phones"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/phoneButtonOn"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/phoneButtonOff"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/category_phone_white" />
+
+                    <TextView
+                        android:id="@+id/phoneTextOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/phones"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/computerOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/computerButtonOn"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        app:srcCompat="@drawable/category_computer_white" />
+
+                    <TextView
+                        android:id="@+id/computerTextOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/computer"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/computerOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/computerButtonOff"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/category_computer_grey" />
+
+                    <TextView
+                        android:id="@+id/computerTextOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/computer"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/healthOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/healthButtonOn"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        app:srcCompat="@drawable/category_health_white" />
+
+                    <TextView
+                        android:id="@+id/healthTextOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/health"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/healthOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/healthButtonOff"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/category_health_grey" />
+
+                    <TextView
+                        android:id="@+id/healthTextOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/health"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/booksOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/booksButtonOn"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        app:srcCompat="@drawable/category_books_white" />
+
+                    <TextView
+                        android:id="@+id/booksTextOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/books"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/booksOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/booksButtonOff"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/category_books_grey" />
+
+                    <TextView
+                        android:id="@+id/booksTextOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/books"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tvButtonOn"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        app:srcCompat="@drawable/category_tv_botton_white"/>
+
+                    <TextView
+                        android:id="@+id/tvTextOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="TV"
+                        android:textColor="@color/orange"
+                        android:textSize="12sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/tvButtonOff"
+                        android:layout_width="71dp"
+                        android:layout_height="71dp"
+                        android:layout_marginHorizontal="23dp"
+                        android:layout_marginVertical="7dp"
+                        android:background="@drawable/circle"
+                        android:backgroundTint="@color/white"
+                        app:srcCompat="@drawable/category_tv_botton_grey"/>
+
+                    <TextView
+                        android:id="@+id/tvTextOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="TV"
+                        android:textColor="@color/black"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </FrameLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_marginVertical="15dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView">
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="300dp"
+                android:layout_height="34dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circle"
+                android:backgroundTint="@color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/home_look_for"
+                tools:ignore="ContentDescription" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:textSize="12sp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:hint="@string/search"
+                android:inputType="textPersonName"/>
+
+        </FrameLayout>
+
+        <ImageButton
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="11dp"
+            android:background="@drawable/circle_mini"
+            android:src="@drawable/home_detales"
+            tools:ignore="ContentDescription" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:text="Hot sales"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="MissingConstraints" />
+
+
+    <Button
+        android:id="@+id/seeMoreHotSales"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginEnd="12dp"
+        android:backgroundTint="#F5F5F5"
+        android:text="@string/see_more"
+        android:textColor="@color/orange"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        tools:ignore="MissingConstraints,SmallSp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:orientation="horizontal"
+        android:id="@+id/hotSales"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textBestSeler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints"
+        tools:listitem="@layout/window_for_hot_sales"/>
+
+    <TextView
+        android:id="@+id/textBestSeler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="192dp"
+        android:text="@string/best_seller"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/seeMorePhone"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:backgroundTint="#F5F5F5"
+        android:text="@string/see_more"
+        android:textColor="@color/orange"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotSales"
+        tools:ignore="MissingConstraints,SmallSp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bestSeller"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textBestSeler"
+        app:layout_constraintVertical_bias="0.0"
+        tools:listitem="@layout/window_for_best_seller">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
