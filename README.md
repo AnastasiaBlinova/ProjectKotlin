@@ -3,7 +3,7 @@
 # an Android-developer career.
 
 + Мои учебные проекты:
-  + [Application temer](https://github.com/AnastasiaBlinova/ProjectKotlin/tree/main/m3_components) 
+  + [Timer on Kotlin in Android studio](https://github.com/AnastasiaBlinova/ProjectKotlin/tree/main/m3_components) (Таймер на Kotlin в Android studio)
 
 Привет, меня зовут Анастасия!
 Я ищу компанию для старта
