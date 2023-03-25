@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.m7_quiz_fragments'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.m7_quiz_fragments"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
