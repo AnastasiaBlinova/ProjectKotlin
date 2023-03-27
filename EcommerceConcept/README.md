@@ -1,10 +1,11 @@
+# My first test assignment
 Работа выполнялась как МОЕ ПЕРВОЕ ТЕСТОВОЕ ЗАДАНИЕ ! 
 
 Пробовалась в Effective Mobile
 
 На позицию "Junior Android разработчик"
 
-https://user-images.githubusercontent.com/116026956/218243882-26aeb858-d4a9-4a33-8b24-f97a6abf02a0.mp4
+<a href="https://gifyu.com/image/SIIGJ"><img src="https://s2.gifyu.com/images/218243882-26aeb858-d4a9-4a33-8b24-f97a6abf02a0.gif" alt="218243882-26aeb858-d4a9-4a33-8b24-f97a6abf02a0.gif" border="0" /></a>
 
 
 ТЗ
