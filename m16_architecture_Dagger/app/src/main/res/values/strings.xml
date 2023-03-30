@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">m16_architecture_with_Dagger</string>
+    <string name="feed_your_cat">Feed your cat</string>
+</resources>
