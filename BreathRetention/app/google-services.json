@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509944068842",
+    "project_id": "my-first-firebase-projec-d23ff",
+    "storage_bucket": "my-first-firebase-projec-d23ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509944068842:android:9cdc866c75c09ff85c7593",
+        "android_client_info": {
+          "package_name": "com.example.breathretention"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509944068842-cvu6dja09hvru52r3do7756ocs5i8kea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-a99110rINEelqOMARyjTG46AY3p5aZY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509944068842-cvu6dja09hvru52r3do7756ocs5i8kea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
