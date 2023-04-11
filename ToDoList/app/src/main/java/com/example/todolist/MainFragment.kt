@@ -10,6 +10,7 @@ import androidx.fragment.app.commit
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.databinding.Fragment1MainBinding
 import com.google.android.material.datepicker.MaterialDatePicker
+import java.text.SimpleDateFormat
 import java.util.*
 
 class MainFragment : Fragment() {
@@ -21,6 +22,7 @@ class MainFragment : Fragment() {
     private var _binding: Fragment1MainBinding? = null
     private val binding get() = _binding!!
     val calendar = Calendar.getInstance()
+    val dateFormat = SimpleDateFormat("dd-MM-yyyy")
     private lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,6 +36,12 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = Fragment1MainBinding.inflate(inflater)
+        binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
+            var date = binding.calendar.date
+
+            binding.message.text = dateFormat.format(date)//"$dayOfMonth.${month + 1}.$year"
+
+        }
        /* val dateDialog = MaterialDatePicker.Builder.datePicker()
             .setTitleText("aaaaa")
             //.setTitleText(resources.getString(R.string.choose_the_date))
