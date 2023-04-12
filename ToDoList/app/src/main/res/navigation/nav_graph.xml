@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.todolist.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment1_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dealDetailsFragment"
+        android:name="com.example.todolist.DealDetailsFragment"
+        android:label="fragment_deal_details"
+        tools:layout="@layout/fragment2_deal_details" >
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+        <action
+            android:id="@+id/action_dealDetailsFragment_to_customDialogFragment"
+            app:destination="@id/customDialogFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/customDialogFragment"
+        android:name="com.example.todolist.CustomDialogFragment"
+        android:label="fragment_custom_dialog"
+        tools:layout="@layout/fragment_custom_dialog" >
+        <action
+            android:id="@+id/action_customDialogFragment_to_dealDetailsFragment"
+            app:destination="@id/dealDetailsFragment" />
+    </dialog>
+</navigation>
