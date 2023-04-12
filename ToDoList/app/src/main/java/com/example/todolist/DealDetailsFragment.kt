@@ -13,7 +13,7 @@ import com.example.todolist.databinding.Fragment2DealDetailsBinding
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-//private const val ARG_PARAM2 = "param2"
+private const val ARG_PARAM2 = "date"
 
 /**
  * A simple [Fragment] subclass.
@@ -27,7 +27,7 @@ class DealDetailsFragment : Fragment() {
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null // change time
-   // private var time: String? = null
+    private var date: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,21 +36,23 @@ class DealDetailsFragment : Fragment() {
             val result = bundle.getString("param1")
             binding.choosedTime.text = result
         }
+
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
-            //param2 = it.getString(ARG_PARAM2)
+            date = it.getString(ARG_PARAM2)
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = Fragment2DealDetailsBinding.inflate(inflater)
        // LocalDate.parse(param1, "mm.dd.")
         //LocalDateTime.now(ZoneId.systemDefault()).
+        binding.dateString.text = date
         binding.chooseTime.setOnClickListener {
-            var dialog = CustomDialogFragment()
+            val dialog = CustomDialogFragment()
             dialog.show(requireFragmentManager(),"")
             binding.choosedTime.text = param1
         }
@@ -73,6 +75,7 @@ class DealDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.choosedTime.text = param1
+        binding.dateString.text = date
     }
 
     companion object {
