@@ -2,6 +2,7 @@ package com.example.todolist
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.text.format.DateUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -36,21 +37,31 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = Fragment1MainBinding.inflate(inflater)
-        binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
+       /* binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
             var date = binding.calendar.date
 
             binding.message.text = dateFormat.format(date)//"$dayOfMonth.${month + 1}.$year"
 
+        }*/
+
+        binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
+          //val date = dateFormat.parse("$dayOfMonth-${month + 1}-$year","dd-MM-yyyy")
+            val changeD: String
+            val changeM: String
+            if ((month+1).toString().length < 2 )
+                changeM = "0${month+1}"
+            else changeM = "${month+1}"
+            if (dayOfMonth.toString().length < 2 )
+                changeD = "0$dayOfMonth"
+            else changeD = "$dayOfMonth"
+            //val date = "$dayOfMonth-${month + 1}-$year"
+            val date = "$changeD.$changeM.$year"
+            binding.message.text = date //"$dayOfMonth.${month + 1}.$year"
+
         }
-       /* val dateDialog = MaterialDatePicker.Builder.datePicker()
-            .setTitleText("aaaaa")
-            //.setTitleText(resources.getString(R.string.choose_the_date))
-            .build()
-        dateDialog.addOnPositiveButtonClickListener { timeInMillis ->
-            calendar.timeInMillis = timeInMillis
-            //Snackbar.make(binding.yourDate, dateFormat.format(calendar.time), Snackbar.LENGTH_LONG).show()
-        }
-        dateDialog.show(requireFragmentManager(),"")*/
+
+
+            //dateDialog.show(requireFragmentManager(),"")
 
         binding.floatingActionButton.setOnClickListener{
             findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment)
