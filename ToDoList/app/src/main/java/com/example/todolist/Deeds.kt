@@ -5,17 +5,19 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.sql.Timestamp
 
-/*@Entity(tableName = "list")
+//@Entity(tableName = "list")
 data class Deeds(
-    @PrimaryKey
-    @ColumnInfo(name = "id")
+    //@PrimaryKey
+    //@ColumnInfo(name = "id")
     val id: Int,
-    @ColumnInfo(name = "date_start")
-    val dateStart: Timestamp,
-    @ColumnInfo(name = "date_finish")
+    //@ColumnInfo(name = "date")
+    val date: String,
+    //@ColumnInfo(name = "date_start")
+    var dateStart: Timestamp,
+    //@ColumnInfo(name = "date_finish")
     val dateFinish: Timestamp,
-    @ColumnInfo(name = "name")
-    val name: String?,
-    @ColumnInfo(name = "description")
-    val description: String?
-)*/
+    //@ColumnInfo(name = "name")
+    var name: String?,
+    //@ColumnInfo(name = "description")
+    var description: String?
+)
