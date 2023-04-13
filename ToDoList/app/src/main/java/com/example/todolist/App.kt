@@ -2,8 +2,8 @@ package com.example.todolist
 
 import android.app.Application
 import androidx.room.Room
-
-/*class App: Application() {
+/*
+class App: Application() {
 
     lateinit var db: AppDatabase
 
