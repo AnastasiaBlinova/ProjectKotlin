@@ -1,13 +1,15 @@
 package com.example.list
 
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.list.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), TaskItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var taskViewModel: TaskViewModel
@@ -19,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
         binding.newTaskButton.setOnClickListener{
 
-            //NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
+            NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
         }
         setRecyclerView()
 
@@ -37,9 +39,18 @@ class MainActivity : AppCompatActivity() {
         taskViewModel.taskItems.observe(this) {
             binding.recyclerView.apply {
                 layoutManager = LinearLayoutManager(applicationContext)
-                adapter = TaskItemAdapter(it)
+                adapter = TaskItemAdapter(it,mainActivity)
             }
         }
+    }
+
+    override fun editTaskItem(taskItem: TaskItemBD) {
+        NewTaskSheet(taskItem).show(supportFragmentManager, "newTaskTag")
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    override fun completeTaskItem(taskItem: TaskItemBD) {
+        taskViewModel.setCompleted(taskItem)
     }
 }
 

@@ -6,13 +6,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.list.databinding.TaskItemBinding
 
 class TaskItemAdapter(
-    private  val taskItems: List<TaskItemBD>
+    private  val taskItems: List<TaskItemBD>,
+    private val clickListener: TaskItemClickListener
 ): RecyclerView.Adapter<TaskItemVieHolder> (){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskItemVieHolder {
        val from = LayoutInflater.from(parent.context)
         val binding = TaskItemBinding.inflate(from, parent, false)
-        return  TaskItemVieHolder(parent.context, binding)
+        return  TaskItemVieHolder(parent.context, binding, clickListener)
     }
 
     override fun onBindViewHolder(holder: TaskItemVieHolder, position: Int) {
