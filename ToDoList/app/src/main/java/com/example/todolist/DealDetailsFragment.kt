@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResultListener
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.get
 import androidx.navigation.fragment.findNavController
 import com.example.todolist.databinding.Fragment2DealDetailsBinding
 
@@ -20,10 +22,11 @@ private const val ARG_PARAM2 = "date"
  * Use the [DealDetailsFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class DealDetailsFragment : Fragment() {
+class DealDetailsFragment(var deeds: Deeds) : Fragment() {
 
     private var _binding: Fragment2DealDetailsBinding? = null
     private val binding get() = _binding!!
+    private lateinit var viewModel: MainViewModel
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null // change time
@@ -62,6 +65,7 @@ class DealDetailsFragment : Fragment() {
         }
 
         binding.saveButton.setOnClickListener {
+            saveAction()
             findNavController().navigate(R.id.action_dealDetailsFragment_to_mainFragment)
         }
 
@@ -69,32 +73,25 @@ class DealDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_dealDetailsFragment_to_mainFragment)
         }
         return binding.root
+
+
+    }
+    fun saveAction(){
+        val name= binding.name.text.toString()
+        val desc = binding.description.text.toString()
+        binding.name.setText("")
+        binding.description.setText("")
     }
 
     // здесь будет код, который будет отображать значение переданного аргумента
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val fragment = requireActivity()
+        if (deeds != null)
+        viewModel = ViewModelProvider(fragment).get(MainViewModel::class.java)
         binding.choosedTime.text = param1
         binding.dateString.text = date
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment DealDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-       /* @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DealDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    //putString(ARG_PARAM2, param2)
-                }
-            }*/
-    }
+
 }
