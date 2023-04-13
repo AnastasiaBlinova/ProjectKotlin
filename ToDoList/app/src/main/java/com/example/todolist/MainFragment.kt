@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.DatePicker
 import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
@@ -33,6 +34,7 @@ class MainFragment : Fragment() {
 
     private var _binding: Fragment1MainBinding? = null
     private val binding get() = _binding!!
+    private lateinit var taskViewModel: MainViewModel
     val calendar = Calendar.getInstance()
     val dateFormat = SimpleDateFormat("dd.MM.yyyy")
     private lateinit var viewModel: MainViewModel
@@ -52,15 +54,8 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = Fragment1MainBinding.inflate(inflater)
-       /* binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
-            var date = binding.calendar.date
-
-            binding.message.text = dateFormat.format(date)//"$dayOfMonth.${month + 1}.$year"
-
-        }*/
 
         val currentDate = dateFormat.format(Date())
-        //System.out.println(" C DATE is  "+currentDate)
         binding.message.text = currentDate
         dateString = currentDate
 
@@ -80,11 +75,6 @@ class MainFragment : Fragment() {
             dateString = date
         }
 
-
-
-            //dateDialog.show(requireFragmentManager(),"")
-
-
         binding.floatingActionButton.setOnClickListener{
             val bundle = Bundle().apply {
                 putString("date", dateString)
@@ -93,6 +83,12 @@ class MainFragment : Fragment() {
             Log.e("!!!", "$dateString, $bundle")
             findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
 
+        }
+        viewModel.name.observe(viewLifecycleOwner){
+            binding.name.text = String.format("Task Name", it)
+        }
+        viewModel.desc.observe(viewLifecycleOwner){
+            binding.desc.text = String.format("Task Desc", it)
         }
 
         return binding.root
