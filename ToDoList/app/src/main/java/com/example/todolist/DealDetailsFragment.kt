@@ -17,12 +17,7 @@ import com.example.todolist.databinding.Fragment2DealDetailsBinding
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "date"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [DealDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class DealDetailsFragment(var deeds: Deeds) : Fragment() {
+class DealDetailsFragment(/*var deeds: Deeds*/) : Fragment() {
 
     private var _binding: Fragment2DealDetailsBinding? = null
     private val binding get() = _binding!!
@@ -87,8 +82,8 @@ class DealDetailsFragment(var deeds: Deeds) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val fragment = requireActivity()
-        if (deeds != null)
-        viewModel = ViewModelProvider(fragment).get(MainViewModel::class.java)
+        //if (deeds != null)
+        //viewModel = ViewModelProvider(fragment).get(MainViewModel::class.java)
         binding.choosedTime.text = param1
         binding.dateString.text = date
     }
