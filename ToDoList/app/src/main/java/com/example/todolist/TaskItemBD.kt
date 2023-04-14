@@ -1,12 +1,9 @@
 package com.example.todolist
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import java.sql.Timestamp
 
 //@Entity(tableName = "list")
-data class Deeds(
+data class TaskItemBD(
     //@PrimaryKey
     //@ColumnInfo(name = "id")
     val id: Int,
@@ -17,7 +14,7 @@ data class Deeds(
     //@ColumnInfo(name = "date_finish")
     val dateFinish: Timestamp,
     //@ColumnInfo(name = "name")
-    var name: String?,
+    var name: String,
     //@ColumnInfo(name = "description")
     var description: String?
 )
