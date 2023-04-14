@@ -2,18 +2,14 @@ package com.example.todolist
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.text.format.DateUtils
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import androidx.fragment.app.commit
-import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.todolist.databinding.Fragment1MainBinding
-import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,9 +24,6 @@ class MainFragment : Fragment() {
     private var dateString: String? = null
     private var answer2: String? = null
 
-    companion object {
-        fun newInstance() = MainFragment()
-    }
 
     private var _binding: Fragment1MainBinding? = null
     private val binding get() = _binding!!
@@ -46,9 +39,14 @@ class MainFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
         // TODO: Use the ViewModel
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -75,6 +73,7 @@ class MainFragment : Fragment() {
             dateString = date
         }
 
+
         binding.floatingActionButton.setOnClickListener{
             val bundle = Bundle().apply {
                 putString("date", dateString)
@@ -84,14 +83,25 @@ class MainFragment : Fragment() {
             findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
 
         }
-        viewModel.name.observe(viewLifecycleOwner){
+        //setRecyclerView()
+        /*viewModel.name.observe(viewLifecycleOwner){
             binding.name.text = String.format("Task Name", it)
         }
         viewModel.desc.observe(viewLifecycleOwner){
             binding.desc.text = String.format("Task Desc", it)
-        }
+        }*/
 
         return binding.root
+    }
+    private fun setRecyclerView(){
+        val fragment = this
+        viewModel.taskItemBD.observe(viewLifecycleOwner){
+            binding.recycler.apply {
+                layoutManager = LinearLayoutManager(requireContext())
+                adapter = TaskItemAdapter(it!!)
+
+            }
+        }
     }
 
 }
