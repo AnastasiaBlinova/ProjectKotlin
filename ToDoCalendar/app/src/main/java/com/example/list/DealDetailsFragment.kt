@@ -14,7 +14,7 @@ import java.time.LocalTime
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class NewTaskSheet (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheetDialogFragment()
+class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheetDialogFragment()
 
     private lateinit var binding: FragmentDealDetailsBinding
     private lateinit var taskViewModel: TaskViewModel
@@ -27,11 +27,13 @@ class NewTaskSheet (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheet
         if (taskItem != null){
             binding.taskTitle.text = "Edit Task"
             val editable = Editable.Factory.getInstance()
+           // binding.dateString.text = ""
             binding.name.text = editable.newEditable(taskItem!!.name)
             binding.desc.text = editable.newEditable(taskItem!!.desc)
             if(taskItem!!.dueTime() != null){
                 dueTime = taskItem!!.dueTime()!!
-                updateTimeButtonText()
+                updateTimeButtonTextStart()
+                updateTimeButtonTextFinish()
             }
         }else{
             binding.taskTitle.text = "New Task"
@@ -44,28 +46,45 @@ class NewTaskSheet (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheet
         }
 
         binding.timePickerButton.setOnClickListener {
-            openTimePicker()
+            openTimePickerFinish()
+        }
+        binding.timePicker.setOnClickListener {
+            openTimePickerStart()
         }
 
         binding.cancelButton.setOnClickListener {
             dismiss()
         }
     }
-
-    private fun openTimePicker(){
+    private fun openTimePickerFinish(){
         if(dueTime == null)
             dueTime = LocalTime.now()
         val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
             dueTime = LocalTime.of(selectedHour, selectedMinute)
-            updateTimeButtonText()
+            updateTimeButtonTextFinish()
         }
         val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
-        dialog.setTitle("Task Due")
+        dialog.setTitle("Choose time")
         dialog.show()
     }
 
-    private fun updateTimeButtonText(){
+    private fun openTimePickerStart(){
+        if(dueTime == null)
+            dueTime = LocalTime.now()
+        val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+            dueTime = LocalTime.of(selectedHour, selectedMinute)
+            updateTimeButtonTextStart()
+        }
+        val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
+        dialog.setTitle("Choose time")
+        dialog.show()
+    }
+    private fun updateTimeButtonTextFinish(){
         binding.timePickerButton.text = String.format("%02d:%02d", dueTime!!.hour, dueTime!!.minute)
+    }
+
+    private fun updateTimeButtonTextStart(){
+        binding.timePicker.text = String.format("%02d:%02d", dueTime!!.hour, dueTime!!.minute)
     }
 
     override fun onCreateView(
@@ -79,16 +98,19 @@ class NewTaskSheet (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheet
     private fun saveAction(){
         val name= binding.name.text.toString()
         val desc = binding.desc.text.toString()
+        //val date = binding.dateString.text.toString()
         val dueTimeString = if(dueTime == null) null else TaskItemBD.timeFormatter.format(dueTime)
         if (taskItem == null){
-            val newTask = TaskItemBD(name, desc, dueTimeString,null)
+            val newTask = TaskItemBD(name, desc, /*date,*/ dueTimeString,null)
             taskViewModel.addTaskItem(newTask)
         }else{
             taskItem!!.name = name
             taskItem!!.desc = desc
+           // taskItem!!.date = date
             taskItem!!.dueTimeString = dueTimeString
             taskViewModel.updateTaskItem(taskItem!!)
         }
+        binding.dateString.text = ""
         binding.name.setText("")
         binding.desc.setText("")
         dismiss()
