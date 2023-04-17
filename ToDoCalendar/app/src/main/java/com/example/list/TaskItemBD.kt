@@ -18,6 +18,8 @@ class TaskItemBD (
     var name:String,
     @ColumnInfo(name = "desc")
     var desc: String,
+   // @ColumnInfo(name = "date")
+   // var date: String,
     @ColumnInfo(name = "dueTimeString")
     var dueTimeString: String?,
     @ColumnInfo(name = "completedDateString")
