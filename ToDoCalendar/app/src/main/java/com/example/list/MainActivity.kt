@@ -1,17 +1,17 @@
 package com.example.list
 
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.get
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.list.databinding.ActivityMainBinding
-import kotlinx.coroutines.delay
+import java.text.SimpleDateFormat
+import java.util.*
 
 class MainActivity : AppCompatActivity(), TaskItemClickListener {
+    private var dateString: String? = null
+    val dateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var binding: ActivityMainBinding
 
@@ -23,9 +23,40 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val currentDate = dateFormat.format(Date())
+        binding.message.text = currentDate
+
         binding.newTaskButton.setOnClickListener{
-            NewTaskSheet(null).show(supportFragmentManager, "newTaskTag")
+            DealDetailsFragment(null).show(supportFragmentManager, "newTaskTag" )
         }
+        binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
+            //val date = dateFormat.parse("$dayOfMonth-${month + 1}-$year","dd-MM-yyyy")
+            val changeD: String
+            val changeM: String
+            if ((month+1).toString().length < 2 )
+                changeM = "0${month+1}"
+            else changeM = "${month+1}"
+            if (dayOfMonth.toString().length < 2 )
+                changeD = "0$dayOfMonth"
+            else changeD = "$dayOfMonth"
+            //val date = "$dayOfMonth-${month + 1}-$year"
+            val date = "$changeD.$changeM.$year"
+            binding.message.text = date //"$dayOfMonth.${month + 1}.$year"
+            dateString = date
+        }
+       /* binding.newTaskButton.setOnClickListener{
+            val bundle = Bundle().apply {
+                putString("date", dateString)
+                //putString("param3", answer2)
+            }
+            Log.e("!!!", "$dateString, $bundle")
+            //DealDetailsFragment(null).show(parentFragmentManager, "newTaskTag")
+            //.findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
+
+            //findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
+
+        }*/
         setRecyclerView()
     }
 
@@ -40,7 +71,7 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
     }
 
     override fun editTaskItem(taskItem: TaskItemBD) {
-        NewTaskSheet(taskItem).show(supportFragmentManager, "newTaskTag")
+        DealDetailsFragment(taskItem).show(supportFragmentManager, "newTaskTag")
     }
 
     override fun completeTaskItem(taskItem: TaskItemBD) {
