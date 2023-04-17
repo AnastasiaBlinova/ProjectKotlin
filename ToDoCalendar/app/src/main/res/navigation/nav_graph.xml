@@ -12,7 +12,7 @@
         tools:layout="@layout/activity_main" />
     <fragment
         android:id="@+id/newTaskSheet"
-        android:name="com.example.list.NewTaskSheet"
+        android:name="com.example.list.DealDetailsFragment"
         android:label="fragment_new_task_sheet"
         tools:layout="@layout/fragment_deal_details" >
         <action
