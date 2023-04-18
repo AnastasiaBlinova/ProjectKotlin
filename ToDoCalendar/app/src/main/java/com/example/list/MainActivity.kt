@@ -10,24 +10,24 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity(), TaskItemClickListener {
-    private var dateString: String? = null
-    val dateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     private lateinit var binding: ActivityMainBinding
-
     private val taskViewModel: TaskViewModel by viewModels {
         TaskItemModelFactory((application as TodoApplication).repository)
     }
+    private val dateViewModel: DateViewModel by viewModels()
+    val dateFormat = SimpleDateFormat("dd.MM.yyyy")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val currentDate = dateFormat.format(Date())
+        var currentDate = dateFormat.format(Date())
         binding.message.text = currentDate
 
         binding.newTaskButton.setOnClickListener{
+            dateViewModel.setData(currentDate)
             DealDetailsFragment(null).show(supportFragmentManager, "newTaskTag" )
         }
         binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
@@ -41,22 +41,10 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
                 changeD = "0$dayOfMonth"
             else changeD = "$dayOfMonth"
             //val date = "$dayOfMonth-${month + 1}-$year"
-            val date = "$changeD.$changeM.$year"
-            binding.message.text = date //"$dayOfMonth.${month + 1}.$year"
-            dateString = date
+            currentDate = "$changeD.$changeM.$year"
+            binding.message.text = currentDate //"$dayOfMonth.${month + 1}.$year"
+            //dateString = currentDate
         }
-       /* binding.newTaskButton.setOnClickListener{
-            val bundle = Bundle().apply {
-                putString("date", dateString)
-                //putString("param3", answer2)
-            }
-            Log.e("!!!", "$dateString, $bundle")
-            //DealDetailsFragment(null).show(parentFragmentManager, "newTaskTag")
-            //.findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
-
-            //findNavController().navigate(R.id.action_mainFragment_to_dealDetailsFragment, args = bundle)
-
-        }*/
         setRecyclerView()
     }
 

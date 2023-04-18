@@ -6,7 +6,9 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.list.databinding.FragmentDealDetailsBinding
 import java.time.LocalTime
@@ -18,7 +20,10 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
 
     private lateinit var binding: FragmentDealDetailsBinding
     private lateinit var taskViewModel: TaskViewModel
-    private var dueTime: LocalTime? = null
+    private val dateViewModel: DateViewModel by activityViewModels()
+
+    private var dueTimeStart: LocalTime? = null
+    private var dueTimeFinish: LocalTime? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,8 +35,9 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
            // binding.dateString.text = ""
             binding.name.text = editable.newEditable(taskItem!!.name)
             binding.desc.text = editable.newEditable(taskItem!!.desc)
-            if(taskItem!!.dueTime() != null){
-                dueTime = taskItem!!.dueTime()!!
+            if(taskItem!!.dueTimeStart() != null && taskItem!!.dueTimeFinish() != null){
+                dueTimeStart = taskItem!!.dueTimeStart()!!
+                dueTimeFinish = taskItem!!.dueTimeFinish()!!
                 updateTimeButtonTextStart()
                 updateTimeButtonTextFinish()
             }
@@ -41,15 +47,18 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
 
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
 
+        dateViewModel.date.observe(viewLifecycleOwner) {
+            binding.dateString.text = it
+        }
         binding.saveButton.setOnClickListener{
             saveAction()
         }
 
-        binding.timePickerButton.setOnClickListener {
-            openTimePickerFinish()
-        }
         binding.timePicker.setOnClickListener {
             openTimePickerStart()
+        }
+        binding.timePickerButton.setOnClickListener {
+            openTimePickerFinish()
         }
 
         binding.cancelButton.setOnClickListener {
@@ -57,34 +66,34 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
         }
     }
     private fun openTimePickerFinish(){
-        if(dueTime == null)
-            dueTime = LocalTime.now()
+        if(dueTimeFinish == null)
+            dueTimeFinish = LocalTime.now()
         val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-            dueTime = LocalTime.of(selectedHour, selectedMinute)
+            dueTimeFinish = LocalTime.of(selectedHour, selectedMinute)
             updateTimeButtonTextFinish()
         }
-        val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
+        val dialog = TimePickerDialog(activity, listener, dueTimeFinish!!.hour, dueTimeFinish!!.minute, true)
         dialog.setTitle("Choose time")
         dialog.show()
     }
 
     private fun openTimePickerStart(){
-        if(dueTime == null)
-            dueTime = LocalTime.now()
+        if(dueTimeStart == null)
+            dueTimeStart = LocalTime.now()
         val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-            dueTime = LocalTime.of(selectedHour, selectedMinute)
+            dueTimeStart = LocalTime.of(selectedHour, selectedMinute)
             updateTimeButtonTextStart()
         }
-        val dialog = TimePickerDialog(activity, listener, dueTime!!.hour, dueTime!!.minute, true)
+        val dialog = TimePickerDialog(activity, listener, dueTimeStart!!.hour, dueTimeStart!!.minute, true)
         dialog.setTitle("Choose time")
         dialog.show()
     }
-    private fun updateTimeButtonTextFinish(){
-        binding.timePickerButton.text = String.format("%02d:%02d", dueTime!!.hour, dueTime!!.minute)
-    }
 
     private fun updateTimeButtonTextStart(){
-        binding.timePicker.text = String.format("%02d:%02d", dueTime!!.hour, dueTime!!.minute)
+        binding.timePicker.text = " Start: ${String.format("%02d:%02d", dueTimeStart!!.hour, dueTimeStart!!.minute)}"
+    }
+    private fun updateTimeButtonTextFinish(){
+        binding.timePickerButton.text = " Finish: ${String.format("%02d:%02d", dueTimeFinish!!.hour, dueTimeFinish!!.minute)}"
     }
 
     override fun onCreateView(
@@ -96,23 +105,30 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
     }
 
     private fun saveAction(){
-        val name= binding.name.text.toString()
-        val desc = binding.desc.text.toString()
-        //val date = binding.dateString.text.toString()
-        val dueTimeString = if(dueTime == null) null else TaskItemBD.timeFormatter.format(dueTime)
-        if (taskItem == null){
-            val newTask = TaskItemBD(name, desc, /*date,*/ dueTimeString,null)
-            taskViewModel.addTaskItem(newTask)
-        }else{
-            taskItem!!.name = name
-            taskItem!!.desc = desc
-           // taskItem!!.date = date
-            taskItem!!.dueTimeString = dueTimeString
-            taskViewModel.updateTaskItem(taskItem!!)
+        try {
+            val name= binding.name.text.toString()
+            val desc = binding.desc.text.toString()
+            val date = binding.dateString.text.toString()
+            val dueTimeStart = if(dueTimeStart == null) null else TaskItemBD.timeFormatter.format(dueTimeStart)
+            val dueTimeFinish = if(dueTimeFinish == null) null else TaskItemBD.timeFormatter.format(dueTimeFinish)
+            if (taskItem == null){
+                val newTask = TaskItemBD(name, desc, date, dueTimeStart!!, dueTimeFinish,null)
+                taskViewModel.addTaskItem(newTask)
+            }else{
+                taskItem!!.name = name
+                taskItem!!.desc = desc
+                taskItem!!.date = date
+                taskItem!!.dueTimeStart = dueTimeStart!!
+                taskItem!!.dueTimeFinish = dueTimeFinish
+                taskViewModel.updateTaskItem(taskItem!!)
+            }
+            //binding.dateString.text = ""
+            binding.name.setText("")
+            binding.desc.setText("")
+            dismiss()
+        }catch (e:Exception){
+            Toast.makeText(requireContext(), "Choose a time to start", Toast.LENGTH_LONG).show()
         }
-        binding.dateString.text = ""
-        binding.name.setText("")
-        binding.desc.setText("")
-        dismiss()
+
     }
 }

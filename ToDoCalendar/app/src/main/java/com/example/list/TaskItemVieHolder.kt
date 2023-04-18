@@ -17,7 +17,6 @@ class TaskItemVieHolder(
 
     val timeFormat = DateTimeFormatter.ofPattern("HH:mm")
 
-
     fun bindTaskItem(taskItem: TaskItemBD){
 
         binding.nameInit.text = taskItem.name
@@ -37,9 +36,13 @@ class TaskItemVieHolder(
             clickListener.editTaskItem(taskItem)
         }
 
-        if (taskItem.dueTime() != null)
-            binding.timeInit.text = timeFormat.format(taskItem.dueTime())
-        else
-            binding.timeInit.text = ""
+        if (taskItem.dueTimeStart() != null && taskItem.dueTimeFinish() != null)
+            binding.timeInit.text = "${timeFormat.format(taskItem.dueTimeStart())} - ${timeFormat.format(taskItem.dueTimeFinish())}"
+        else{ if (taskItem.dueTimeStart() != null)
+                binding.timeInit.text = "${timeFormat.format(taskItem.dueTimeStart())}"
+            else
+                binding.timeInit.text = ""
+        }
+
     }
 }

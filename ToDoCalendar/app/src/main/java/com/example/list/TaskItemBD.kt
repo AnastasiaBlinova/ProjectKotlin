@@ -18,10 +18,12 @@ class TaskItemBD (
     var name:String,
     @ColumnInfo(name = "desc")
     var desc: String,
-   // @ColumnInfo(name = "date")
-   // var date: String,
-    @ColumnInfo(name = "dueTimeString")
-    var dueTimeString: String?,
+    @ColumnInfo(name = "date")
+    var date: String,
+    @ColumnInfo(name = "dueTimeStart")
+    var dueTimeStart: String,
+    @ColumnInfo(name = "dueTimeFinish")
+    var dueTimeFinish: String?,
     @ColumnInfo(name = "completedDateString")
     var completedDateString: String?,
     @PrimaryKey(autoGenerate = true)
@@ -31,8 +33,11 @@ class TaskItemBD (
     fun completedDate(): LocalDate? = if(completedDateString == null) null
         else LocalDate.parse(completedDateString, dateFormatter)
 
-    fun dueTime(): LocalTime? = if (dueTimeString == null) null
-        else LocalTime.parse(dueTimeString, timeFormatter)
+    fun dueTimeStart(): LocalTime? = //if (dueTimeStart == null) null else
+         LocalTime.parse(dueTimeStart, timeFormatter)
+
+    fun dueTimeFinish(): LocalTime? = if (dueTimeFinish == null) null
+    else LocalTime.parse(dueTimeFinish, timeFormatter)
 
     fun isCompleted() = completedDate() != null
 
