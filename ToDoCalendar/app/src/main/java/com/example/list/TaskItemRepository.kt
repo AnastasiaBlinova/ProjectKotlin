@@ -12,6 +12,11 @@ class TaskItemRepository(private val taskItemDao: TaskItemDao ) {
     }
 
     @WorkerThread
+    suspend fun findByDate(date: String){
+        taskItemDao.findByDate(date)
+    }
+
+    @WorkerThread
     suspend fun updateTaskItem(taskItemBD: TaskItemBD){
         taskItemDao.updateTaskItem(taskItemBD)
     }

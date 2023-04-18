@@ -17,6 +17,12 @@ class TaskViewModel(private val repository: TaskItemRepository): ViewModel () {
         repository.insertTaskItem(newTask)
     }
 
+    fun readDate(date: String){
+        viewModelScope.launch {
+            repository.findByDate(date)
+        }
+    }
+
     fun updateTaskItem(taskItem: TaskItemBD) = viewModelScope.launch {
         repository.updateTaskItem(taskItem)
     }

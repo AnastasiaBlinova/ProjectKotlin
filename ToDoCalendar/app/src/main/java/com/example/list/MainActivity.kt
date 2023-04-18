@@ -17,13 +17,14 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
     }
     private val dateViewModel: DateViewModel by viewModels()
     val dateFormat = SimpleDateFormat("dd.MM.yyyy")
+    var currentDate = dateFormat.format(Date())
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var currentDate = dateFormat.format(Date())
+
         binding.message.text = currentDate
 
         binding.newTaskButton.setOnClickListener{
@@ -40,18 +41,23 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
             if (dayOfMonth.toString().length < 2 )
                 changeD = "0$dayOfMonth"
             else changeD = "$dayOfMonth"
-            //val date = "$dayOfMonth-${month + 1}-$year"
             currentDate = "$changeD.$changeM.$year"
-            binding.message.text = currentDate //"$dayOfMonth.${month + 1}.$year"
-            //dateString = currentDate
+            binding.message.text = currentDate
+         //   taskViewModel.readDate(currentDate)
+            setRecyclerView()
         }
         setRecyclerView()
+
     }
 
     private fun setRecyclerView() {
+        taskViewModel.readDate(currentDate)
         val mainActivity = this
+        taskViewModel.readDate(currentDate)
         taskViewModel.taskItems.observe(this) {
+      //      taskViewModel.readDate(currentDate)
             binding.recyclerView.apply {
+                taskViewModel.readDate(currentDate)
                 layoutManager = LinearLayoutManager(applicationContext)
                 adapter = TaskItemAdapter(it,mainActivity)
             }
