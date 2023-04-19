@@ -17,6 +17,7 @@ class TaskItemRepository(private val taskItemDao: TaskItemDao ) {
     @WorkerThread
     suspend fun findByDate(date: String){
         taskItemDao.findByDate(date)
+        Log.e("findByDate",  "${taskItemDao.findByDate(date) }")
     }
 
     @WorkerThread

@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
             binding.message.text = currentDate
          //   taskViewModel.readDate(currentDate)
             setRecyclerView()
-            Log.e("клик календарь", "${taskViewModel.readDate(currentDate)}")
+            Log.e("клик календарь $currentDate", "${taskViewModel.readDate(currentDate)}")
         }
         setRecyclerView()
     }
