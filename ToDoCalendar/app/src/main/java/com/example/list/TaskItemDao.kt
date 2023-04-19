@@ -15,7 +15,7 @@ interface TaskItemDao {
     suspend fun updateTaskItem(taskItemBD: TaskItemBD)
 
     @Query("SELECT * FROM task_item_table WHERE date LIKE:date ")
-    suspend fun findByDate(date: String): TaskItemBD?
+    suspend fun findByDate(date: String): List<TaskItemBD>
 
     @Delete
     suspend fun deleteTaskItem(taskItemBD: TaskItemBD)
