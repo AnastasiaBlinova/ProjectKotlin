@@ -1,13 +1,10 @@
 package com.example.list
 
-import android.os.Build
-import androidx.annotation.RequiresApi
+
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.LocalDate
-import java.time.LocalTime
-import java.util.*
 
 class TaskViewModel(private val repository: TaskItemRepository): ViewModel () {
     var taskItems: LiveData<List<TaskItemBD>> = repository.allTaskItems.asLiveData()
