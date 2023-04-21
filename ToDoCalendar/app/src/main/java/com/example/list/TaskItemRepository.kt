@@ -1,23 +1,14 @@
 package com.example.list
 
-import android.util.Log
 import androidx.annotation.WorkerThread
-import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.flow.Flow
 
 class TaskItemRepository(private val taskItemDao: TaskItemDao ) {
     val allTaskItems: Flow<List<TaskItemBD>> = taskItemDao.allTaskItems()
-    //val taskItemsDate = MutableLiveData<List<TaskItemBD>>
 
     @WorkerThread
     suspend fun insertTaskItem(taskItemBD: TaskItemBD){
         taskItemDao.insertTaskItem(taskItemBD)
-    }
-
-    @WorkerThread
-    suspend fun findByDate(date: String){
-        taskItemDao.findByDate(date)
-        Log.e("findByDate",  "${taskItemDao.findByDate(date) }")
     }
 
     @WorkerThread

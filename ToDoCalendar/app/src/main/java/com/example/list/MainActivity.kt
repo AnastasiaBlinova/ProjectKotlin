@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         binding.message.text = currentDate
 
         binding.newTaskButton.setOnClickListener{
@@ -32,7 +31,6 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
             DealDetailsFragment(null).show(supportFragmentManager, "newTaskTag" )
         }
         binding.calendar.setOnDateChangeListener {view, year, month, dayOfMonth ->
-            //val date = dateFormat.parse("$dayOfMonth-${month + 1}-$year","dd-MM-yyyy")
             val changeD: String
             val changeM: String
             if ((month+1).toString().length < 2 )
@@ -43,23 +41,19 @@ class MainActivity : AppCompatActivity(), TaskItemClickListener {
             else changeD = "$dayOfMonth"
             currentDate = "$changeD.$changeM.$year"
             binding.message.text = currentDate
-         //   taskViewModel.readDate(currentDate)
             setRecyclerView()
-            Log.e("клик календарь $currentDate", "${taskViewModel.readDate(currentDate)}")
+            Log.e("клик календарь $currentDate", "")
         }
         setRecyclerView()
     }
 
     private fun setRecyclerView() {
-        taskViewModel.readDate(currentDate)
-        val mainActivity = this
-        taskViewModel.readDate(currentDate)
-        taskViewModel.taskItems.observe(this) {
-      //      taskViewModel.readDate(currentDate)
+        taskViewModel.taskItems.observe(this) {list ->
             binding.recyclerView.apply {
-                taskViewModel.readDate(currentDate)
                 layoutManager = LinearLayoutManager(applicationContext)
-                adapter = TaskItemAdapter(it,mainActivity)
+                adapter = TaskItemAdapter(list.filter {
+                        it.date == currentDate
+                }, this@MainActivity)
             }
         }
     }

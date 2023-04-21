@@ -13,9 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.list.databinding.FragmentDealDetailsBinding
 import java.time.LocalTime
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //BottomSheetDialogFragment()
 
     private lateinit var binding: FragmentDealDetailsBinding
@@ -32,7 +29,6 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
         if (taskItem != null){
             binding.taskTitle.text = "Edit Task"
             val editable = Editable.Factory.getInstance()
-           // binding.dateString.text = ""
             binding.name.text = editable.newEditable(taskItem!!.name)
             binding.desc.text = editable.newEditable(taskItem!!.desc)
             if(taskItem!!.dueTimeStart() != null && taskItem!!.dueTimeFinish() != null){
@@ -50,6 +46,7 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
         dateViewModel.date.observe(viewLifecycleOwner) {
             binding.dateString.text = it
         }
+
         binding.saveButton.setOnClickListener{
             saveAction()
         }
@@ -65,17 +62,6 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
             dismiss()
         }
     }
-    private fun openTimePickerFinish(){
-        if(dueTimeFinish == null)
-            dueTimeFinish = LocalTime.now()
-        val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
-            dueTimeFinish = LocalTime.of(selectedHour, selectedMinute)
-            updateTimeButtonTextFinish()
-        }
-        val dialog = TimePickerDialog(activity, listener, dueTimeFinish!!.hour, dueTimeFinish!!.minute, true)
-        dialog.setTitle("Choose time")
-        dialog.show()
-    }
 
     private fun openTimePickerStart(){
         if(dueTimeStart == null)
@@ -85,6 +71,18 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
             updateTimeButtonTextStart()
         }
         val dialog = TimePickerDialog(activity, listener, dueTimeStart!!.hour, dueTimeStart!!.minute, true)
+        dialog.setTitle("Choose time")
+        dialog.show()
+    }
+
+    private fun openTimePickerFinish(){
+        if(dueTimeFinish == null)
+            dueTimeFinish = LocalTime.now()
+        val listener = TimePickerDialog.OnTimeSetListener { _, selectedHour, selectedMinute ->
+            dueTimeFinish = LocalTime.of(selectedHour, selectedMinute)
+            updateTimeButtonTextFinish()
+        }
+        val dialog = TimePickerDialog(activity, listener, dueTimeFinish!!.hour, dueTimeFinish!!.minute, true)
         dialog.setTitle("Choose time")
         dialog.show()
     }
@@ -122,13 +120,11 @@ class DealDetailsFragment (var taskItem: TaskItemBD?): DialogFragment() { //Bott
                 taskItem!!.dueTimeFinish = dueTimeFinish
                 taskViewModel.updateTaskItem(taskItem!!)
             }
-            //binding.dateString.text = ""
             binding.name.setText("")
             binding.desc.setText("")
             dismiss()
         }catch (e:Exception){
             Toast.makeText(requireContext(), "Choose a time to start", Toast.LENGTH_LONG).show()
         }
-
     }
 }

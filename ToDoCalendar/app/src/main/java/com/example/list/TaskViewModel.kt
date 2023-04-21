@@ -1,6 +1,5 @@
 package com.example.list
 
-
 import androidx.lifecycle.*
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -9,15 +8,8 @@ import java.time.LocalDate
 class TaskViewModel(private val repository: TaskItemRepository): ViewModel () {
     var taskItems: LiveData<List<TaskItemBD>> = repository.allTaskItems.asLiveData()
 
-    //добавить элемент задачи
     fun addTaskItem(newTask:TaskItemBD) = viewModelScope.launch {
         repository.insertTaskItem(newTask)
-    }
-
-    fun readDate(date: String){
-        viewModelScope.launch {
-            repository.findByDate(date)
-        }
     }
 
     fun updateTaskItem(taskItem: TaskItemBD) = viewModelScope.launch {

@@ -1,17 +1,14 @@
 package com.example.list
 
 import android.content.Context
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Timestamp
 import java.time.LocalDate
 import java.time.LocalTime
 import java.time.format.DateTimeFormatter
-import java.util.*
+
 @Entity(tableName = "task_item_table")
 class TaskItemBD (
     @ColumnInfo(name = "name")

@@ -2,11 +2,8 @@ package com.example.list
 
 import android.content.Context
 import android.graphics.Paint
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.list.databinding.TaskItemBinding
-import kotlinx.coroutines.delay
 import java.time.format.DateTimeFormatter
 
 class TaskItemVieHolder(
@@ -43,6 +40,5 @@ class TaskItemVieHolder(
             else
                 binding.timeInit.text = ""
         }
-
     }
 }
