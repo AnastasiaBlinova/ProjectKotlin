@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ApplicationTwo</string>
+    <string name="textForKubSU">Hello student from Kuban State University!</string>
+    <string name="smile">Smile</string>
+    <string name="next">Next</string>
+    <string name="name">name</string>
+    <string name="age">age</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
+    <string name="four">Four</string>
+    <string name="your_education_now">Your course of study:</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
+    <string name="home">Home</string>
+    <string name="lamp">Switch</string>
+
+</resources>
