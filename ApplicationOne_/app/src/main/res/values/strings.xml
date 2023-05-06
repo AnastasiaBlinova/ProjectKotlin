@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ApplicationOne</string>
+    <string name="testText">Text for KubSU</string>
+    <string name="people">People</string>
+    <string name="place_in_bus">Place in bus</string>
+    <string name="reset">Reset</string>
+</resources>
