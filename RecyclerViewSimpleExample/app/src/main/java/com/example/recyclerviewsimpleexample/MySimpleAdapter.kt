@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.recyclerviewsimpleexample.databinding.MySimpleListItemBinding
 
 class MySimpleAdapter(
-    private val values: List<String>
+    values: List<String>
 ) : RecyclerView.Adapter<MySimpleViewHolder>() {
-
+    private var values = values.toMutableList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MySimpleViewHolder {
         val binding = MySimpleListItemBinding.inflate(LayoutInflater.from(parent.context))
         return MySimpleViewHolder(binding)
@@ -20,10 +20,38 @@ class MySimpleAdapter(
     }
 
     override fun getItemCount(): Int = values.size
+
+    fun setData(values: List<String>){
+        this.values = values.toMutableList()
+        notifyDataSetChanged()
+    }
+
+    fun addItem(index: Int = 0, value:String){
+        values.add(index,value)
+        notifyItemInserted(index)
+    }
+
+    fun removeItem(index: Int = 0){
+        values.removeAt(index)
+        notifyItemRemoved(index)
+    }
 }
 
 class MySimpleViewHolder(val binding: MySimpleListItemBinding):
     RecyclerView.ViewHolder(binding.root)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
