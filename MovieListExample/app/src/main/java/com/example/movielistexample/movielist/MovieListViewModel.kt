@@ -14,6 +14,9 @@ class MovieListViewModel private constructor(
 ) : ViewModel() {
     constructor() : this (MovieListRepository())
 
+    private val _isLoading = MutableStateFlow(false)//заведем отдельный стэйт флоу отвечающий за индикатор загруски
+    val isLoading = _isLoading.asStateFlow()
+
     private val _movies = MutableStateFlow<List<Movie>>(emptyList())
     val movies = _movies.asStateFlow()
 
@@ -24,11 +27,13 @@ class MovieListViewModel private constructor(
     private fun loadPremieres(){
         viewModelScope.launch ( Dispatchers.IO){
             kotlin.runCatching {                            // припомощи ретрофита загружается список премьер за январь 2022
+                _isLoading.value = true  //как только начинается загрузка в StateFlow записывается ТРУ
                 repository.getPremieres(2022, "JANUARY")
             }.fold(
                 onSuccess = {_movies.value = it},    // после успешной загрузки данных список помещается в StateFlow, на который будет подписан фрагмент
                 onFailure = { Log.d("MovieListViewModel", it.message ?: "")}
             )
+            _isLoading.value = false // после окончания загрузки ФОЛС
         }
     }
 }
