@@ -1,13 +1,12 @@
 package com.example.movielistexample.api
 
 import com.example.movielistexample.models.MovieList
-import com.google.gson.Gson
+import com.example.movielistexample.models.PagedMovieList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
-import java.time.Year
 
 interface MovieListApi {
     @Headers("X-API-Key: $api_key")                              //Загружаем список премьер
