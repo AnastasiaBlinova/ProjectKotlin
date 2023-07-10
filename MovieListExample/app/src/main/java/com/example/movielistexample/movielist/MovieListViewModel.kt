@@ -5,8 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.movielistexample.models.Movie
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 class MovieListViewModel private constructor(
@@ -17,8 +16,20 @@ class MovieListViewModel private constructor(
     private val _isLoading = MutableStateFlow(false)//заведем отдельный стэйт флоу отвечающий за индикатор загруски
     val isLoading = _isLoading.asStateFlow()
 
+    val filterEnabled= MutableStateFlow(false)
+
     private val _movies = MutableStateFlow<List<Movie>>(emptyList())
-    val movies = _movies.asStateFlow()
+    val movies: StateFlow<List<Movie>> = combine(_movies, filterEnabled){ movies, filterEnabled ->
+        if (filterEnabled)
+            movies.filter { movie ->
+                movie.countries.any { it.country == "Россия" }
+            }
+        else movies
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.Eagerly,
+        initialValue = _movies.value
+    )
 
     init{                           //при создании viewModel вызывается функция loadPremieres()
         loadPremieres()
