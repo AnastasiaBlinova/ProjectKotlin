@@ -17,6 +17,7 @@ class MovieListFragment : Fragment() {
     private val viewModel: MovieListViewModel by viewModels()
 
     private val movieAdapter = MovieAdapter()
+    private val movieListAdapter = MovieListAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,10 +34,11 @@ class MovieListFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
-        binding.recycler.adapter = movieAdapter
+        binding.recycler.adapter = movieListAdapter
 
         viewModel.movies.onEach {
-            movieAdapter.setData(it)
+  //          movieAdapter.setData(it)
+            movieListAdapter.submitList(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
