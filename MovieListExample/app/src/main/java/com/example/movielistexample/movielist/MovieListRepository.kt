@@ -5,8 +5,13 @@ import com.example.movielistexample.models.Movie
 import kotlinx.coroutines.delay
 
 class MovieListRepository {                                    //вызывается viewModel
-    suspend fun getPremieres(year: Int, month: String): List<Movie>{
+//    suspend fun getPremieres(year: Int, month: String): List<Movie>{
+//        delay(1000)
+//        return retrofit.movies(year,month).items
+//    }
+
+    suspend fun getTopList(page: Int): List<Movie>{
         delay(1000)
-        return retrofit.movies(year,month).items
+        return retrofit.topList(page).films
     }
 }
