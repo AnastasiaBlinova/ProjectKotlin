@@ -18,6 +18,7 @@ class MovieListFragment : Fragment() {
 
     private val movieAdapter = MovieAdapter()
     private val movieListAdapter = MovieListAdapter()
+    private val pagingDataAdapter = MoviePagingDataAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,13 +34,18 @@ class MovieListFragment : Fragment() {
 
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.recycler.adapter = pagingDataAdapter
 
-        binding.recycler.adapter = movieListAdapter
-
-        viewModel.movies.onEach {
-  //          movieAdapter.setData(it)
-            movieListAdapter.submitList(it)
+        viewModel.pagedMovies.onEach {
+            pagingDataAdapter.submitData(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+//        binding.recycler.adapter = movieListAdapter
+//
+//        viewModel.movies.onEach {
+//  //          movieAdapter.setData(it)
+//            movieListAdapter.submitList(it)
+//        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     override fun onDestroyView() {
