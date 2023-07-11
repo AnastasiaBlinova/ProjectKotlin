@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface MovieListApi {
     @Headers("X-API-Key: $api_key")                              //Загружаем список премьер
     @GET("/api/v2.2/films/premieres")
-    suspend fun movie(@Query("year") year: Int, @Query("month") month: String): MovieList
+    suspend fun movies(@Query("year") year: Int, @Query("month") month: String): MovieList
 
     @Headers("X-API-Key: $api_key")                             //Загружаем список фильмоф ТОП из 250
     @GET("/api/v2.2/films/top?type=TOP_250_BEST-FILMS")
@@ -30,6 +30,7 @@ val retrofit = Retrofit
     )
     .baseUrl("https://kinopoiskapiunofficial.tech")
     .addConverterFactory(GsonConverterFactory.create())
+    .build()
     .create(MovieListApi::class.java)
 
 
