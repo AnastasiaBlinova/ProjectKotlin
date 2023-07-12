@@ -1,22 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PeopleActivity"
+    android:orientation="vertical"
+    android:background="#DEF0F4">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:background="#317E9C"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="?attr/actionBarTheme">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp">
+            <ImageView
+                android:id="@+id/backBt"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:tint="@color/white"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_backspac"
+                tools:ignore="UseAppTint" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/name"
+                    android:text="@string/name_swimming_pool"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textAlignment="center"
+                    android:textStyle="bold|normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <TextView
-        android:id="@+id/rcView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Чатик Настены с собой!"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="parent" />
 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Корпоративный чат"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:layout_marginTop="20sp"
+        android:textStyle="bold|normal"
+        android:textColor="#3D44BA"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Выберите сотрудника из списка"
+        android:textSize="16sp"
+        android:textAlignment="center"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20sp"
+        android:textStyle="bold|normal"
+        android:textColor="#7175AA"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#CACACA"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="15dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="6dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mRec"
+            tools:listitem="@layout/item_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+<!--
     <Button
         android:id="@+id/b_send"
         android:text="SEND"
@@ -35,5 +109,5 @@
         android:hint="Message"
         app:layout_constraintBottom_toTopOf="@+id/b_send"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintStart_toStartOf="parent" /> -->
+</LinearLayout>
