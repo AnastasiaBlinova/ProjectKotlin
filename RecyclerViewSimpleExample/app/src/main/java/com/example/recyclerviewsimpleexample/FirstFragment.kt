@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.recyclerviewsimpleexample.databinding.FragmentFirstBinding
+import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -39,6 +40,20 @@ class FirstFragment : Fragment() {
         val data: List <String> = (1..100).map {it.toString()}
         val myAdapter = MySimpleAdapter(data)
         binding.recyclerView.adapter = myAdapter
+
+        binding.add.setOnClickListener {
+            val item = Random.nextInt(100, 200).toString()
+            myAdapter.addItem(5, item)
+        }
+        binding.remove.setOnClickListener {
+            myAdapter.removeItem(1)
+        }
+        binding.set.setOnClickListener {
+            val newData = List(100){
+                Random.nextInt(0, 100).toString()
+            }
+            myAdapter.setData(newData)
+        }
     }
 
     override fun onDestroyView() {
@@ -46,3 +61,14 @@ class FirstFragment : Fragment() {
         _binding = null
     }
 }
+
+
+
+
+
+
+
+
+
+
+
