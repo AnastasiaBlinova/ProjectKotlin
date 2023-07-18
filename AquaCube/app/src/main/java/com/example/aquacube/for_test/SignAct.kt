@@ -1,4 +1,4 @@
-package com.example.aquacube
+package com.example.aquacube.for_test
 //
 //import android.content.Intent
 //import androidx.appcompat.app.AppCompatActivity
