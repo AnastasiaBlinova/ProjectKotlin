@@ -5,11 +5,11 @@
 ### Stack 🛠:
 <ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Coroutines+Flow, Thread, 
 <ul> SQLite, Firebase, Figma
-+ Мобильное приложение cjcnjbn bp ctvb 'rhfyjd.
++ Мобильное приложение.
   +
   <ul>
     <div align="center">
-<a href="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png"><img hight="300" width="700" align="center" src="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png" alt="1_KEcGysVAlWoJA8U_FoUzrg.png" border="0" /></a>
+<a href="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png"><img hight="300" width="700" align="center" src="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png" /></a>
 </div>
     ![alt text](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
 ![описание](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
