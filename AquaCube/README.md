@@ -10,8 +10,10 @@
   <ul>
     <div align="center">
 <a href="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png"><img hight="300" width="700" align="center" src="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png" /></a>
-</div>
-    <a href="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png"><img hight="300" width="700" align="center" src="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png" /></a>
+
+    <a href="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png"><img hight="300" width="700" align="center" src="https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png" />
+    </div>
+    </a>
     
 ![описание](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
     <ul>
