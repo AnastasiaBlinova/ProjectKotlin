@@ -7,16 +7,15 @@
 <ul> SQLite, Firebase, Figma
 + Мобильное приложение.
   +
-<ul>  
+</ul>  
    
-
-+ Скриншоты экранов:
+# Скриншоты экранов:
 
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
  
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
 <ul>  
-+ Аналитика работы приложения в Firebase
+# Аналитика работы приложения в Firebase
   
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Аналитика%20работы%20приложения.png)
 
