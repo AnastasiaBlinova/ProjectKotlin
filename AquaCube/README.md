@@ -7,13 +7,13 @@
 <ul> SQLite, Firebase, Figma
 + Мобильное приложение.
   +
-  
+<ul>  
    
 </br>
 
-![описание](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
+![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
  
-![описание](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
+![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
 
 <!--
 <ul>
