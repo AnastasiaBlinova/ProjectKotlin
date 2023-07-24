@@ -6,6 +6,7 @@
 
   [Установочный файл](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/ToDoCalendar/app-debug.apk) 
 </ul>
+
 ### Stack 🛠:
 <ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Repository, Coroutines+Flow, Thread, 
 <ul> SQLite, Room, Figma
