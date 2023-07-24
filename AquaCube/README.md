@@ -19,7 +19,11 @@
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
 <ul> 
-  
+
+# Иконка приложения:
+![]( https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/иконка.png)
+<ul> 
+ 
 # Аналитика работы приложения в Firebase:
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Аналитика%20работы%20приложения.png)
 <ul>
