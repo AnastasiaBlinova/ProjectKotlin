@@ -10,16 +10,21 @@
 </ul>  
    
 # Скриншоты экранов:
-
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
- 
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
-<ul>  
-# Аналитика работы приложения в Firebase
+<ul> 
   
+# Аналитика работы приложения в Firebase:
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Аналитика%20работы%20приложения.png)
+<ul>
+  
+# База данных - облачное хранилище: 
+![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Бд%20облачное%20хранилище.png)
+<ul>
 
-## About ME 💬 :    <a href="https://gifyu.com/image/SIWcn"><img hight="300" width="100" src="https://s2.gifyu.com/images/VakAE.gif" alt="VakAE.gif" border="0" /></a>  
+# Схема базы данных реального времени: 
+![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Схема%20бд.png)
+<ul>
 
 <!--
 <ul>
