@@ -12,13 +12,12 @@
 ### Stack 🛠:
 <ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Coroutines+Flow, Thread, 
 <ul> SQLite, Firebase, Figma
-
-</ul>  
+ 
    
 # Скриншоты экранов:
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок1.png)
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Рисунок2.png)
-<ul> 
+
 
 # Иконка приложения:
 ![]( https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/иконка.png)
@@ -30,11 +29,11 @@
 
 # База данных - облачное хранилище: 
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Бд%20облачное%20хранилище.png)
-<ul>
+
 
 # Схема базы данных реального времени: 
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Схема%20бд.png)
-<ul>
+
 
 <!--
 <ul>
