@@ -26,8 +26,7 @@
 
 # Аналитика работы приложения в Firebase:
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Аналитика%20работы%20приложения.png)
-<ul>
-</ul> 
+ 
 
 # База данных - облачное хранилище: 
 ![](https://github.com/AnastasiaBlinova/ProjectKotlin/blob/main/AquaCube/Бд%20облачное%20хранилище.png)
