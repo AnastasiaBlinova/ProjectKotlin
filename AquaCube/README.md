@@ -11,7 +11,7 @@
     
 ### Stack 🛠:
 <ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Coroutines+Flow, Thread, 
-<ul> SQLite, Firebase, Figma
+<ul> SQLite, Firebase, Figma </ul>
  
    
 # Скриншоты экранов:
