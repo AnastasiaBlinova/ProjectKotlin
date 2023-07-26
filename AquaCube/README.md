@@ -10,7 +10,7 @@
 
     
 ### Stack 🛠:
-<ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Coroutines+Flow, Thread, 
+<ul> Kotlin, Android studio, Xml, Activity, Fragment, RecyclerView, Adapter, ViewModel, Coroutines+Flow, Thread, </ul>
 <ul> SQLite, Firebase, Figma </ul>
  
    
