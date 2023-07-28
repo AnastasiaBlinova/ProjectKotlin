@@ -13,6 +13,8 @@ class QuestListFragment : Fragment(R.layout.fragment_quest_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val questListViewModel = ViewModelProvider(this).get(QuestListViewModel::class.java)
+//        questListViewModel.fetchQuestList((activity?.application as? QuestApp)?.questApi)
+        (activity?.application as? QuestApp)?.questApi?.let { questListViewModel.fetchQuestList(it) }
     }
 
 }
