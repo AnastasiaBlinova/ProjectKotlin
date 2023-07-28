@@ -1,6 +1,7 @@
 package com.example.retrofitbasic
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -21,7 +22,7 @@ class QuestListViewModel(application: Application): AndroidViewModel(application
                 .observeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-
+                    Log.e("TAG", it.items.count().toString())
                 }, {
 
                 }))
