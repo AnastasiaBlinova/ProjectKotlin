@@ -48,6 +48,12 @@ class MainActivity : AppCompatActivity() {
             ContactsContract.Contacts.DISPLAY_NAME,
             ContactsContract.Contacts.HAS_PHONE_NUMBER
         )
+        val phoneUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
+        val phoneProjection = arrayOf(
+            ContactsContract.CommonDataKinds.Phone.NUMBER
+        )
+        val phoneSelection = ContactsContract.CommonDataKinds.Phone.CONTACT_ID + "=?"
+
         val stringBuilder = StringBuilder()
         contentResolver.query(
             contentUri,
@@ -62,8 +68,30 @@ class MainActivity : AppCompatActivity() {
             val hasPhoneIndex = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)
 
             while (cursor.moveToNext()){
-
+                stringBuilder.append(cursor.getString(nameIndex))  //добавляем имя контакта
+                    .append(": ")
+                val hasPhone = cursor.getInt(hasPhoneIndex) > 0    // проверка есть ли у контакта телефон
+                if (hasPhone){                                     // процесс получения конкретного
+                    val contactId = cursor.getString(idIndex)
+                    contentResolver.query(
+                        phoneUri,
+                        phoneProjection,
+                        phoneSelection,
+                        arrayOf(contactId),
+                        null
+                    )?.use { phoneCursor ->
+                        val numberIndex = phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                        while (phoneCursor.moveToNext()){
+                            stringBuilder.append(phoneCursor.getString(numberIndex))
+                                .append(", ")
+                        }
+                    }
+                } else {
+                    stringBuilder.append("no phone")
+                }
+                stringBuilder.append("\n")
             }
         }
+        binding.textView.text = stringBuilder.toString()
     }
 }
