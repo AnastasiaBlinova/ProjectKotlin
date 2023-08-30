@@ -3,8 +3,8 @@ package com.example.readcontacts
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
 import android.widget.Toast
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import com.example.readcontacts.databinding.ActivityMainBinding
@@ -42,6 +42,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getContacts() {
-        TODO("Not yet implemented")
+        val contentUri = ContactsContract.Contacts.CONTENT_URI
+        val contactsProjection = arrayOf(
+            ContactsContract.Contacts._ID,
+            ContactsContract.Contacts.DISPLAY_NAME,
+            ContactsContract.Contacts.HAS_PHONE_NUMBER
+        )
+        val stringBuilder = StringBuilder()
+        contentResolver.query(
+            contentUri,
+            contactsProjection,
+            null,
+            null,
+            null
+
+        )?.use { cursor ->
+            val idIndex = cursor.getColumnIndex(ContactsContract.Contacts._ID)
+            val nameIndex = cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME)
+            val hasPhoneIndex = cursor.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)
+
+            while (cursor.moveToNext()){
+
+            }
+        }
     }
 }
