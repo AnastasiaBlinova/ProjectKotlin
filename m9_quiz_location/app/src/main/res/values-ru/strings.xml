@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">HAU</string>
+
+    <string name="hello_how_are_you">Привет, как ты?</string>
+    <string name="action_settings">Отправить</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Первый фрагмент</string>
+    <string name="second_fragment_label">Второй фрагмент</string>
+    <string name="next">Далее</string>
+
+
+    <string name="share_thoughts">Поделиться мыслями</string>
+    <string name="back">Назад</string>
+    <string name="forth">Вперед</string>
+    <string name="share">Поделиться</string>
+
+    <!--<string name="date_picker" tools:ignore="MissingTranslation">открыть выбор даты</string> -->
+    <string name="choose_the_date">Выберите дату своего рождения</string>
+    <string name="enter_your_date_of_birth" tools:ignore="MissingTranslation" >Введите день своего рождения</string>
+
+    <!-- Вопросы -->
+    <string name="question_1">Как ты себя чувствуешь?</string>
+    <string name="question_2">Что тебя беспокоит?</string>
+    <string name="question_3">Как планируешь справиться?</string>
+
+    <!-- Oтветы -->
+    <string name="answers_1_1">Плохо</string>
+    <string name="answers_1_2">Нормально</string>
+    <string name="answers_1_3">Хорошо</string>
+    <string name="answers_1_4">Отлично</string>
+
+    <string name="answers_2_1">Политическая ситуация</string>
+    <string name="answers_2_2">Личные события в жизни</string>
+    <string name="answers_2_3">Проблемы близких</string>
+    <string name="answers_2_4">Все выше перечисленное</string>
+
+    <string name="answers_3_1">При помощи активного вида деятельности</string>
+    <string name="answers_3_2">Пообщаться с живым человеком</string>
+    <string name="answers_3_3">Разобраться самостоятельно</string>
+    <string name="answers_3_4">Верю, что время лечит</string>
+
+    <!-- Результаты -->
+    <string name="feedback_1_1">Ты сегодня как выжатый лимон.",</string>
+    <string name="feedback_1_2">Тебе неочень, но бывало и хуже.</string>
+    <string name="feedback_1_3">Ты сегодня в хорошем настроении.</string>
+    <string name="feedback_1_4">Ты в прекрасном расположении духа.</string>
+
+    <string name="feedback_2_1">Ты обеспокоен политической ситуацией.</string>
+    <string name="feedback_2_2">У тебя сейчас сложности в твоей жизни.</string>
+    <string name="feedback_2_3">Ты переживаешь о своих близких.</string>
+    <string name="feedback_2_4">У тебя сейчас очень непростой этап в жизни.</string>
+
+    <string name="feedback_3_1">Ты большой молодец! Я верю, что активный вид деятельности понизит твою тревожность!</string>
+    <string name="feedback_3_2">Здорово! Общение с людьми пойдет на пользу!</string>
+    <string name="feedback_3_3">Я верю, что ты самостоятельно справишься со своей тревожностью!</string>
+    <string name="feedback_3_4">Да, ты прав - время поможет уменьшить тревожность.</string>
+
+    <!-- Всплывающий текст-->
+    <string name="toast">Ответьте на все вопросы</string>
+
+</resources>

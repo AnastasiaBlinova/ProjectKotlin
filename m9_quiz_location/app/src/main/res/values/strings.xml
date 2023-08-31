@@ -1,0 +1,59 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">HAU</string>
+    <string name="hello_how_are_you">Hello, how are you?</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+
+    <string name="share_thoughts">Share thoughts</string>
+    <string name="back">back</string>
+    <string name="forth">forth</string>
+    <string name="share">share</string>
+    
+    <!--<string name="date_picker" tools:ignore="MissingTranslation">открыть выбор даты</string> -->
+    <string name="choose_the_date">Choose date your birthday</string>
+    <string name="enter_your_date_of_birth" tools:ignore="MissingTranslation" >Enter your date of birth</string>
+
+    <!-- Вопросы -->
+    <string name="question_1">How are you feeling?</string>
+    <string name="question_2">What is bothering you?</string>
+    <string name="question_3">How do you plan to cope?</string>
+
+    <!-- Oтветы -->
+    <string name="answers_1_1">Bad</string>
+    <string name="answers_1_2">Normal</string>
+    <string name="answers_1_3">Good</string>
+    <string name="answers_1_4">Wonderful</string>
+
+    <string name="answers_2_1">Political situation</string>
+    <string name="answers_2_2">Personal life events</string>
+    <string name="answers_2_3">Problems of loved ones</string>
+    <string name="answers_2_4">All of the above</string>
+
+    <string name="answers_3_1">With the help of an active type of activity</string>
+    <string name="answers_3_2">Communicate with a living person</string>
+    <string name="answers_3_3">Figure it out on your own</string>
+    <string name="answers_3_4">I believe that time heals</string>
+
+    <!-- Результаты -->
+    <string name="feedback_1_1">You are like a squeezed lemon today.",</string>
+    <string name="feedback_1_2">You are not much, but it is been worse.</string>
+    <string name="feedback_1_3">You are in a good mood today.</string>
+    <string name="feedback_1_4">You are in a great mood.</string>
+
+    <string name="feedback_2_1">You are concerned about the political situation.</string>
+    <string name="feedback_2_2">You are having difficulties in your life right now.</string>
+    <string name="feedback_2_3">You are worried about your loved ones.</string>
+    <string name="feedback_2_4">You are having a difficult stage in your life right now.</string>
+
+    <string name="feedback_3_1">You are a great fellow! I believe that an active type of activity will lower your anxiety!</string>
+    <string name="feedback_3_2">Great! Communication with people will benefit!</string>
+    <string name="feedback_3_3">I believe that you will cope with your anxiety on your own!</string>
+    <string name="feedback_3_4">Yes, you are right - time will help reduce anxiety.</string>
+
+    <!-- Всплывающий текст-->
+    <string name="toast">Answer all questions</string>
+
+</resources>
