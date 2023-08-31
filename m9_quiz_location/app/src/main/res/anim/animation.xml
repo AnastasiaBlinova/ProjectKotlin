@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:duration="200">
+    <!-- alpha отвечает за изменение прозрачности -->
+    <alpha
+        android:fromAlpha="0.0"
+        android:toAlpha="1.0"/>
+    <!-- scale изменение масштаба-->
+    <scale
+        android:fromXScale="200"
+        android:fromYScale="0"
+        android:toXScale="1"
+        android:toYScale="1"/>
+    <!-- translate изменение по координатом-->
+    <translate
+        android:fromXDelta="0"
+        android:fromYDelta="0"
+        android:toXDelta="100%"
+        android:toYDelta="100%"/>
+    <!-- rotate вращение-->
+   <rotate
+       android:fromDegrees="0"
+       android:pivotX="10"
+       android:pivotY="10"
+       android:toDegrees="360"/>
+
+</set>
