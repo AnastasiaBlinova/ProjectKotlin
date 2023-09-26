@@ -44,7 +44,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             isZoomControlsEnabled = true
             isMyLocationButtonEnabled = true
         }
-        googleMap.isMyLocationEnabled = true
+  //      googleMap.isMyLocationEnabled = true
 
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
