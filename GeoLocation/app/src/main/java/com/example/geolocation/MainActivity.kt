@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private val locationCallback = object : LocationCallback(){
-        override fun onLocationResult(p0: LocationResult) {
-
+        override fun onLocationResult(result: LocationResult) {
+            binding.message.text = result.lastLocation.toString()
         }
     }
 
