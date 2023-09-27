@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.os.Looper
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
@@ -29,6 +30,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMapsBinding
 
     private var needAnimationCamera = false
+    private var needMoveCamera = true
+
+    private val handler = Handler(Looper.getMainLooper())
+    private val cameraMovedRunnable = Runnable{
+        needMoveCamera = true
+    }
 
     private val launcher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -48,11 +55,13 @@ class MainActivity : AppCompatActivity() {
                         LatLng(location.latitude, location.longitude),
                         18f
                 )
-                if (needAnimationCamera){
-                    map?.animateCamera(cameraUpdate)
-                } else {
-                    needAnimationCamera = true
-                    map?.moveCamera(cameraUpdate)
+                if (needMoveCamera) {
+                    if (needAnimationCamera) {
+                        map?.animateCamera(cameraUpdate)
+                    } else {
+                        needAnimationCamera = true
+                        map?.moveCamera(cameraUpdate)
+                    }
                 }
 
             }
@@ -79,6 +88,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.mapOverlay.setOnTouchListener{v, event ->
+            handler.removeCallbacks(cameraMovedRunnable)
+            needMoveCamera = false
+            handler.postDelayed(cameraMovedRunnable, 5_000)
+            false
+        }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
