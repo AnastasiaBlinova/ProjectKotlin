@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         override fun onLocationResult(result: LocationResult) {
             result.lastLocation?.let{ location ->
                 locationListener?.onLocationChanged(location)
-
+                binding.speed.text = getString(R.string.speed, location.speed)
 
                 val cameraUpdate =  CameraUpdateFactory.newLatLngZoom(
                         LatLng(location.latitude, location.longitude),
