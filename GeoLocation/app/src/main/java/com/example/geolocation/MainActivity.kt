@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fusedClient: FusedLocationProviderClient
     private lateinit var binding: ActivityMapsBinding
 
-
+    private var needAnimationCamera = false
 
     private val launcher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -42,12 +42,19 @@ class MainActivity : AppCompatActivity() {
         override fun onLocationResult(result: LocationResult) {
             result.lastLocation?.let{ location ->
                 locationListener?.onLocationChanged(location)
-                map?.animateCamera(
-                    CameraUpdateFactory.newLatLngZoom(
+
+
+                val cameraUpdate =  CameraUpdateFactory.newLatLngZoom(
                         LatLng(location.latitude, location.longitude),
                         18f
-                    )
                 )
+                if (needAnimationCamera){
+                    map?.animateCamera(cameraUpdate)
+                } else {
+                    needAnimationCamera = true
+                    map?.moveCamera(cameraUpdate)
+                }
+
             }
 //            binding.message.text = result.lastLocation.toString()
         }
@@ -103,6 +110,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         fusedClient.removeLocationUpdates(locationCallback)
+        needAnimationCamera = false
     }
 
     private fun checkPermissions(){
