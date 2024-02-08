@@ -30,6 +30,7 @@ val scope = CoroutineScope( SupervisorJob() + Dispatchers.Default + exceptionHan
 //        }
 //        println("Start working..")
      canceledCoroutine() //ошибка в одной отменяет все остальные
+//    scope.coroutineContext.job.join()
      //2
      (scope.coroutineContext.job as? CompletableJob)?.let {
          it.complete()
